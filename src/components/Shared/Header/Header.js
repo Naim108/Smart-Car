@@ -15,18 +15,35 @@ const Header = () => {
     <Navbar.Collapse className="justify-content-end ">
     <Link className="nav-bar" to="/home">Home</Link>
     <Link className="nav-bar" to="/explore">Explore</Link>
-    <Link className="nav-bar" to="/review">Review</Link>
      { user?.email?
          <Dropdown>
          <Dropdown.Toggle className="nav-bar dropdown-color"  id="dropdown-autoclose-true">
-           Admin Dashboard
+           Dashboard
          </Dropdown.Toggle>
      
          <Dropdown.Menu>
            
-           <Dropdown.Item><Link className="dashboard" to="/addProduct">Add Product</Link></Dropdown.Item>
+           
            <Dropdown.Item><Link className="dashboard" to="/myOrders">My Orders</Link></Dropdown.Item>
-           <Dropdown.Item><Link className="dashboard" to="/manageOrder">Manage All Order</Link></Dropdown.Item>
+           <Dropdown.Item><Link className="dashboard" to="/pay">Pay</Link></Dropdown.Item>
+           <Dropdown.Item><Link className="dashboard" to="/review">Review</Link></Dropdown.Item>
+           <Dropdown.Item><Button className="dashboard" onClick={logOut} >Log Out</Button></Dropdown.Item>
+           
+         </Dropdown.Menu>
+       </Dropdown>
+       : ''
+     }
+     { user?.email?
+         <Dropdown>
+         <Dropdown.Toggle className="nav-bar dropdown-color"  id="dropdown-autoclose-true">
+          Admin Dashboard
+         </Dropdown.Toggle>
+     
+         <Dropdown.Menu>
+           <Dropdown.Item><Link className="dashboard" to="/addProduct">Add Products</Link></Dropdown.Item>
+           <Dropdown.Item><Link className="dashboard" to="/manageAllOrder">Manage All Order</Link></Dropdown.Item>
+           <Dropdown.Item><Button className="dashboard" onClick={logOut} >Log Out</Button></Dropdown.Item>
+           
          </Dropdown.Menu>
        </Dropdown>
        : ''

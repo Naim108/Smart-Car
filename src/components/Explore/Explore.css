@@ -7,12 +7,17 @@
 }
 
 .card-img{
-    width: 80%;
-    
-
+    height: 220px;
 }
-
-
+.margin{
+    text-align: center;
+    width: 25%;
+    align-items: center;
+}
+.delivery{
+    color: #fa6400;
+    font-size: 20px;
+}
 .header-color{
     color: #fa6400;
     font-weight: bold;

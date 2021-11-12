@@ -14,6 +14,11 @@ import Login from './components/Login/Login/Login';
 import Register from './components/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider';
 import Review from './components/Review/Review';
+import Pay from './components/Pay/Pay';
+import MyOrders from './components/MyOrders/MyOrders';
+import AddProducts from './components/AddProduct/AddProduct';
+import Details from './components/Details/Details';
+import ManageAllOrder from './components/ManageAllOrders/ManageAllOrders';
 
 function App() {
   return (
@@ -38,6 +43,21 @@ function App() {
           </Route>
           <Route path="/review">
             <Review />
+          </Route>
+          <Route path="/pay">
+            <Pay/>
+          </Route>
+          <Route exact path="/products/:productId">
+            <Details></Details>
+          </Route>
+          <Route path="/myOrders">
+            <MyOrders />
+          </Route>
+          <Route path="/addProduct">
+            <AddProducts />
+          </Route>
+          <Route path="/manageAllOrder">
+            <ManageAllOrder />
           </Route>
           <Route path="*">
             <Found

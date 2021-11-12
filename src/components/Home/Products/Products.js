@@ -7,7 +7,7 @@ const Products = () => {
     const [products,setProducts]=useState([])
 
     useEffect(()=>{
-        fetch('https://gentle-cove-50707.herokuapp.com/products')
+        fetch('http://localhost:5000/products')
         .then(res=>res.json())
         .then(data=>setProducts(data))
         
@@ -18,23 +18,28 @@ const Products = () => {
             <p>Order your car</p>
                     <div className="row mt-4">
             {
-                products?.map(product=><div className="col-md-4 g-4">
+                products?.slice(0,6).map(product=><div className="col-md-4 g-4">
                     <Card className="card-container">
 
            <Card.Body>
            <Card.Text>
            <div>
                <img className="card-img" src={product.img} alt="" />
-           <h4 className="fw-bold mt-3">{product.name}</h4>
-           <p>{product.description.slice(0,50)}</p>
-           <h5 className="fw-bold">Delivery Time: 30 Min</h5>
-           <h5 className="fw-bold">Delivery Charge <span className="fw-bold delivery">$5</span></h5>
-          
+           <h4 className="fw-bold">{product.name}</h4>
+           <p className="fw-bold text-secondary">{product.description.slice(0,100)}</p>
+           </div>
+           <div className="row">
+               <div className="col-md-6">
+                   <p>${product.price}</p>
+               </div>
+               <div className="col-md-6">
+                   <p>22/32</p>
+               </div>
            </div>
           </Card.Text>
          </Card.Body>
           <Card.Footer className="bg-success  fw-bold ">
-          <Link to={`products/${product._id}`}><button className="btn text-light fw-bold">Order Details</button> </Link>
+          <Link to={`products/${product._id}`}><button className="btn text-light fw-bold">Order Now</button> </Link>
           
               
 
