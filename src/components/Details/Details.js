@@ -13,7 +13,7 @@ const Details = () => {
     const [orders,setOrders]=useState();
     const {user}=useAuth()
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://young-caverns-24656.herokuapp.com/products/${productId}`)
         .then(res=>res.json())
         .then(data=>setDetails(data))
 
@@ -26,7 +26,7 @@ const Details = () => {
         formState: { errors },
       } = useForm();
       const onSubmit = (data) => {
-        fetch(`http://localhost:5000/products/${productId}`,{
+        fetch(`https://young-caverns-24656.herokuapp.com/products/${productId}`,{
             method: 'POST',
             headers:{'content-type':'application/json'},
             body:JSON.stringify(data)

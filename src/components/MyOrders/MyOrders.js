@@ -7,13 +7,13 @@ const MyOrders = () => {
     
 
     useEffect(()=>{
-        fetch('http://localhost:5000/myOrders')
+        fetch('https://young-caverns-24656.herokuapp.com/myOrders')
         .then(res=>res.json())
         .then(data=>setOrders(data))
         
       },[])
       const handleDeleteOrder=id=>{
-        const url=`http://localhost:5000/manageAllOrder/${id}`
+        const url=`https://young-caverns-24656.herokuapp.com/manageAllOrder/${id}`
         fetch(url,{
             method: "DELETE"
         })
