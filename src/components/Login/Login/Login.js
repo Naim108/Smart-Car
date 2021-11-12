@@ -77,7 +77,7 @@ const handleLoginWithEmailAndPassword=(e)=>{
 
       </form>
       <button  className="google-btn mt-5 btn" onClick={handleGoogleSignin}>Google Sign In</button>
-      <p> New User Food cart ?
+      <p> New User Smart Car ?
           <br /><Link to="/register">Please register</Link ></p>
 
     </div>

@@ -76,11 +76,11 @@ const handleGoogleSignin = () => {
                <br/>
                <input className="inputField" type="password"  onBlur={handlePassword} placeholder="password"/>
                <br/>
-               <input className="btn btn-success fw-bold" type="submit" placeholder="create"/>
+               <input className="btn btn-success fw-bold" type="submit" value="Register" placeholder="create"/>
                <br/>
            </form>
            <button className="google-btn mt-5 btn"  onClick={handleGoogleSignin}>Google Sign In</button>
-           <p> Already Signed Up Food cart? <br /><Link  to="/login">Please Login</Link ></p>
+           <p> Already Signed Up Smart Car? <br /><Link  to="/login">Please Login</Link ></p>
        </div>
     );
 };
