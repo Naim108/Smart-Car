@@ -14,7 +14,7 @@ const ManageAllOrder = () => {
         
       },[])
       const handleDeleteOrder=id=>{
-        const url=`https://young-caverns-24656.herokuapp.com//manageAllOrder/${id}`
+        const url=`https://young-caverns-24656.herokuapp.com/manageAllOrder/${id}`
         fetch(url,{
             method: "DELETE"
         })
@@ -27,9 +27,6 @@ const ManageAllOrder = () => {
             }
 
         })
-    }
-    const handleApprove=e=>{
-        // console.log(e.target.value)
     }
     return (
 <div className=" container mt-5">
@@ -51,12 +48,12 @@ const ManageAllOrder = () => {
       {
           orders?.map(order=><tr key={order._id}>
               <td>{order._id}</td>
-      <td>{order.email}</td>
       <td>{order.userName}</td>
+      <td>{order.email}</td>
       <td>{order.date}</td>
       <td>{order.address}</td>
-      <td> <button onClick={handleApprove} className="btn btn-success ">Approve</button></td>
-      <td><button onClick={()=>handleDeleteOrder(order._id)} className="btn btn-warning ">Delete</button></td>
+      <td> <button className="btn btn-success ">Approve</button></td>
+      <td><button onClick={()=>handleDeleteOrder(order?._id)} className="btn btn-warning ">Delete</button></td>
           </tr>
               
           )

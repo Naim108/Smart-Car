@@ -1,15 +1,21 @@
+import userEvent from '@testing-library/user-event';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 
 const MyOrders = () => {
     const [orders,setOrders]=useState([])
+    const {user}=useAuth()
+
     
 
     useEffect(()=>{
         fetch('https://young-caverns-24656.herokuapp.com/myOrders')
         .then(res=>res.json())
-        .then(data=>setOrders(data))
+        .then(data=>{
+            const order=data.filter(order=>order?.email===user?.email)
+            setOrders(order)
+        })
         
       },[])
       const handleDeleteOrder=id=>{
@@ -44,11 +50,11 @@ const MyOrders = () => {
   </thead>
   <tbody>
     
-      {
+  {
           orders?.map(order=><tr>
               <td>{order._id}</td>
-      <td>{order.email}</td>
       <td>{order.userName}</td>
+      <td>{order.email}</td>
       <td>{order.date}</td>
       <td>{order.address}</td>
       <td className="text-primary">Pending</td>
