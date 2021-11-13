@@ -42,6 +42,7 @@ const Header = () => {
          <Dropdown.Menu>
            <Dropdown.Item><Link className="dashboard" to="/addProduct">Add Products</Link></Dropdown.Item>
            <Dropdown.Item><Link className="dashboard" to="/manageAllOrder">Manage All Order</Link></Dropdown.Item>
+           <Dropdown.Item><Link className="dashboard" to="/makeAdmin">Make Admin</Link></Dropdown.Item>
            <Dropdown.Item><Button className="dashboard" onClick={logOut} >Log Out</Button></Dropdown.Item>
            
          </Dropdown.Menu>

@@ -19,6 +19,7 @@ import MyOrders from './components/MyOrders/MyOrders';
 import AddProducts from './components/AddProduct/AddProduct';
 import Details from './components/Details/Details';
 import ManageAllOrder from './components/ManageAllOrders/ManageAllOrders';
+import MakeAdmin from './components/MakeAdmin/MakeAdmin';
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route path="/manageAllOrder">
             <ManageAllOrder />
+          </Route>
+          <Route path="/makeAdmin">
+            <MakeAdmin />
           </Route>
           <Route path="*">
             <Found
