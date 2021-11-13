@@ -64,7 +64,7 @@ const Register = () => {
                         </NavLink>
                     </form>}
                     {isLoading && 'please wait'}
-                    {user?.email && <p>Success</p> }
+                    
                     {authError && <p>Success</p>}
                 </div>
             </div>

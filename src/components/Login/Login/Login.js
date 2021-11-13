@@ -1,86 +1,64 @@
 import React, { useState } from "react";
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import useAuth from "../../../hooks/useAuth";
 
 
 const Login = () => {
-  const { signInWithGoogle,setUser ,loginWithEmailAndPassword, setIsLoading} = useAuth();
+  const [loginData, setLoginData] = useState({});
+    const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
 
-const history= useHistory()
-const location = useLocation()
+    const location = useLocation();
+    const history = useHistory();
 
-const url= location.state?.from || "/home"
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    }
+    const handleLoginSubmit = e => {
+        loginUser(loginData.email, loginData.password, location, history);
+        e.preventDefault();
+    }
 
-const [email , setEmail]= useState("")
-const [password , setPassword] = useState("")
-
-
-const handleGetEmail = (e) =>{
-  setEmail(e.target.value);
-}
-
-const handleGetPassword = (e)=> {
-    setPassword(e.target.value);
-}
-
-
-
-
-const handleLoginWithEmailAndPassword=(e)=>{
-    e.preventDefault();
-
-    loginWithEmailAndPassword(email,password)
-    .then((res) => {
-      setIsLoading(true)
-        setUser(res.user);
-        history.push(url)
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-}
-
-
-
-
-
-  const handleGoogleSignin = () => {
-    signInWithGoogle()
-      .then((res) => 
-        {
-          setIsLoading(true)
-          setUser(res.user)
-          history.push(url)
-        }
-          )
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setIsLoading(false)
-      })
-  };
-
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history)
+    }
   return (
-    <div className="text-center mt-5 form-design  container">
-      <h2>This is Login </h2>
-      <form onSubmit={handleLoginWithEmailAndPassword}>
-          <input className="inputField" type="email" onBlur={handleGetEmail} placeholder="Email"/>
-          <br/>
-          <input className="inputField" type="password" onBlur={handleGetPassword} placeholder="Password"/>
-          <br/>
-          <br/>
-          <input className="btn btn-success fw-bold" type="submit" value ="Signin"/>
+    <div>
+    <div div spacing={2}>
+        <div item sx={{ mt: 8 }} xs={12} md={6}>
+            <div variant="body1" gutterBottom>Login</div>
+            <form onSubmit={handleLoginSubmit}>
+                <input
+                    label="Your Email"
+                    name="email"
+                    onChange={handleOnChange}
+                    />
+                <input
+                    
+                    label="Your Password"
+                    type="password"
+                    name="password"
+                    onChange={handleOnChange}
+                     />
 
-      </form>
-      <button  className="google-btn mt-5 btn" onClick={handleGoogleSignin}>Google Sign In</button>
-      <p> New User Smart Car ?
-          <br /><Link to="/register">Please register</Link ></p>
-
+                <button  type="submit" >Login</button>
+                <NavLink
+                    style={{ textDecoration: 'none' }}
+                    to="/register">
+                    <button>New User? Please Register</button>
+                </NavLink>
+                {isLoading && <p>Please waite a moment..........</p>}
+                {user?.email && <p>Login Successful</p>}
+                {authError && <p>{authError}</p>}
+            </form>
+            <p>------------------------</p>
+            <button onClick={handleGoogleSignIn} >Google Sign In</button>
+        </div>
     </div>
+</div>
   );
 };
 

@@ -1,12 +1,23 @@
-.card-container{
-    padding: 10px;
-    
-    
-}
+
 
 
 .header-color{
-    color: #fa6400;
+    color: #20b1eb;
     font-weight: bold;
     font-size: 50px;
 }
+.card-image{
+       background-color:coral;
+       height: 320px;
+       
+        background-image:url('../../../images/bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-position: center;
+        position: relative;
+    }
+    .name{
+        margin-top: -50;
+        margin-left: 100px;
+    }

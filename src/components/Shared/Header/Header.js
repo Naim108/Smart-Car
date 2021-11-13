@@ -6,6 +6,7 @@ import './Header.css'
 
 const Header = () => {
   const {user,logOut}=useAuth();
+
     return (
         <>
         <Navbar  variant="light" sticky="top" collapseOnSelect expand="lg">
@@ -33,7 +34,7 @@ const Header = () => {
        </Dropdown>
        : ''
      }
-     { user?.email?
+     {user?.email?
          <Dropdown>
          <Dropdown.Toggle className="nav-bar dropdown-color"  id="dropdown-autoclose-true">
           Admin Dashboard

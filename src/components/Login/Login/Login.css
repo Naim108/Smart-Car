@@ -3,3 +3,20 @@
     justify-content: center;
     align-items: center;
 }
+.inputField{
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.form-design{
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    padding: 20px;
+    width: 400px;
+}
+.google-btn{
+    background-color:tomato;
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+    padding: 10px;
+}

@@ -4,15 +4,13 @@ import useAuth from '../../hooks/useAuth';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
-    const [success, setSuccess] = useState(false);
-    const { token } = useAuth();
 
     const handleOnBlur = e => {
         setEmail(e.target.value);
     }
     const handleAdminSubmit = e => {
         const user = { email };
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://young-caverns-24656.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -22,9 +20,12 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    console.log(data);
-                    setSuccess(true);
+                    alert('Admin added successfull')
+                    
                 }
+                setEmail('')
+                
+                
             })
 
         e.preventDefault()
@@ -41,7 +42,7 @@ const MakeAdmin = () => {
                     />
                 <button type="submit" variant="contained">Make Admin</button>
             </form>
-            {success && <p>Made Admin successfully!</p>}
+            
         </div>
     );
 };

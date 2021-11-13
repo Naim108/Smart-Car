@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import './Reviews.css'
 
 const Reviews = () => {
@@ -17,14 +16,14 @@ const Reviews = () => {
             <h1 className="header-color">Our Client Feedback</h1>
                     <div className="row mt-4">
             {
-                reviews?.slice(0,3).map(review=><div className="col-md-4 g-2">
-                    <Card>
+                reviews?.map(review=><div className=" col-md-4 g-2">
+                    <Card className="card-image">
 
            <Card.Body>
            <Card.Text>
            <div>
-               <p>{review?.review}</p>
-               <h6 className="fw-bold">{review?.name}</h6>
+               <p className="ms-5 mt-5 me-5">{review?.review.slice(0,150)}</p>
+               <h6 className="fw-bold name ">{review?.name}</h6>
            </div>
           </Card.Text>
          </Card.Body>

@@ -20,6 +20,7 @@ import AddProducts from './components/AddProduct/AddProduct';
 import Details from './components/Details/Details';
 import ManageAllOrder from './components/ManageAllOrders/ManageAllOrders';
 import MakeAdmin from './components/MakeAdmin/MakeAdmin';
+import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -48,9 +49,9 @@ function App() {
           <Route path="/pay">
             <Pay/>
           </Route>
-          <Route exact path="/products/:productId">
+          <PrivateRoute exact path="/products/:productId">
             <Details></Details>
-          </Route>
+          </PrivateRoute>
           <Route path="/myOrders">
             <MyOrders />
           </Route>
