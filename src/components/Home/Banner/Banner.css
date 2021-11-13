@@ -1,7 +1,7 @@
 .banner{
     width: 100%;
-    height: 90vh;
-    background-image:url('../../../images/banner.png');
+    height: 600px;
+    background-image:url('../../../images/banner1.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
@@ -9,24 +9,25 @@
     position: relative;
 }
 .banner-details{
-    margin-top: 200px;
     font-weight: bold;
-    margin-top: 120px;
+    margin-top: 100px;
+    
 }
 .banner-details h1{
     font-size: 50px;
     font-weight: bold;
     color: white;
+   
 }
 .banner-details p{
-    color: white;
+    color: rgb(14, 11, 11);
     font-weight: 600;
 }
 .details-btn{
-    background-color: #00AB55;
-    border: 1px solid #00AB55;
+    background-color:orangered;
+    border: 1px solid orangered;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     font-weight: bold;
     color: white;
 }

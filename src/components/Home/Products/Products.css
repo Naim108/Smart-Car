@@ -2,19 +2,13 @@
     width: 360px;
     height: 480px;
     padding: 2px;
-    
-    
 }
-
 .card-img{
     width: 80%;
     
 
 }
-
-
 .header-color{
-    color: #fa6400;
     font-weight: bold;
     font-size: 50px;
 }

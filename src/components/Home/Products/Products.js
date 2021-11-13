@@ -14,8 +14,8 @@ const Products = () => {
       },[])
     return (
         <div className="container mt-5">
-            <h1 className="header-color">Our Top Car</h1>
-            <p>Order your car</p>
+            <h1 className="header-color">Our Availeable Product</h1>
+            
                     <div className="row mt-4">
             {
                 products?.slice(0,6).map(product=><div className="col-md-4 g-4">
@@ -30,15 +30,15 @@ const Products = () => {
            </div>
            <div className="row">
                <div className="col-md-6">
-                   <p>${product.price}</p>
+                   <p className="fw-bold">${product.price}</p>
                </div>
                <div className="col-md-6">
-                   <p>22/32</p>
+                   <p className="fw-bold">22/32</p>
                </div>
            </div>
           </Card.Text>
          </Card.Body>
-          <Card.Footer className="bg-success  fw-bold ">
+          <Card.Footer className="btn-color  fw-bold ">
           <Link to={`products/${product._id}`}><button className="btn text-light fw-bold">Order Now</button> </Link>
           
               

@@ -1,3 +1,7 @@
 .image{
     width: 400px;
 }
+.bg-form{
+    background-color: rgb(237, 237, 241);
+    border-radius: 30px;
+}

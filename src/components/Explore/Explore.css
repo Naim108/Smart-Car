@@ -1,4 +1,4 @@
-.card-container{
+.card-design{
     width: 360px;
     height: 480px;
     padding: 2px;
@@ -14,12 +14,7 @@
     width: 25%;
     align-items: center;
 }
-.delivery{
-    color: #fa6400;
-    font-size: 20px;
+.btn-color{
+    background-color: goldenrod;
 }
-.header-color{
-    color: #fa6400;
-    font-weight: bold;
-    font-size: 50px;
-}
+

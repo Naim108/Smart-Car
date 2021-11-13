@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import useAuth from "../../../hooks/useAuth";
-
+import './Login.css'
+import logo from '../../../images/20944201.jpg'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -26,39 +27,46 @@ const Login = () => {
         signInWithGoogle(location, history)
     }
   return (
-    <div>
-    <div div spacing={2}>
-        <div item sx={{ mt: 8 }} xs={12} md={6}>
-            <div variant="body1" gutterBottom>Login</div>
+      <div className="container">
+              <div className="row">
+        <div className="col-md-5">
+        <div className="form-design">
+        <div>
             <form onSubmit={handleLoginSubmit}>
-                <input
+                <input className="inputField"
                     label="Your Email"
                     name="email"
                     onChange={handleOnChange}
-                    />
+                    /> <br />
                 <input
+                 className="inputField"
                     
                     label="Your Password"
                     type="password"
                     name="password"
                     onChange={handleOnChange}
-                     />
+                     /> <br />
 
-                <button  type="submit" >Login</button>
-                <NavLink
-                    style={{ textDecoration: 'none' }}
+                <button className="btn-warning btn" type="submit" >Login</button>
+                <br />
+                <br />
+                <Link
                     to="/register">
-                    <button>New User? Please Register</button>
-                </NavLink>
+                    <a>New User? Please Register</a>
+                </Link>
                 {isLoading && <p>Please waite a moment..........</p>}
-                {user?.email && <p>Login Successful</p>}
                 {authError && <p>{authError}</p>}
             </form>
-            <p>------------------------</p>
-            <button onClick={handleGoogleSignIn} >Google Sign In</button>
+            
+            <button className="google-btn btn" onClick={handleGoogleSignIn} >Google Sign In</button>
+        </div>
+</div>
+        </div>
+        <div className="col-md-7">
+            <img className="logo" src={logo} alt="" />
         </div>
     </div>
-</div>
+      </div>
   );
 };
 

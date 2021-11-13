@@ -50,12 +50,13 @@ const Details = () => {
                     <img className="image"  src={details?.img} alt="" />
                    <h1>{details?.name}</h1>
                    <p>{details?.description}</p>
-                   <h3 className="delivery fw-bold">Price ${details?.price}</h3>
+                   <h3>Price ${details?.price}</h3>
+                   <p className="text-primary">12 Month Loan System</p>
 
                 </div>
-                <div className="col-md-5 mt-5">
+                <div className="col-md-5 bg-form mt-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
+                  {/* use hook form */}
         <input
           className="p-2 w-100 mt-5 m-2"
           {...register("email")}
@@ -80,7 +81,6 @@ const Details = () => {
           required
           placeholder="Enter your Address"
         />
-        {/* errors will return when field validation fails  */}
         {errors.exampleRequired && <span>This field is required</span>}
         <br />
         <input className="p-3 mt-3 btn btn-success" type="submit" value="Place Order"  />

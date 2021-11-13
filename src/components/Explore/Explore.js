@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../Shared/Header/Header';
-import './Explore.css'
+import './Explore.css';
 
 const Explore = () => {
     const [products,setProducts]=useState([])
@@ -19,25 +19,30 @@ const Explore = () => {
            <Header></Header>
            </div>
            <div className="container mt-5">
-            <h6 className="header-color">Top 100 Car</h6>
+            <h6 className="text-primary fw-bold fs-5">Find your expect car </h6>
                     <div className="row mt-4">
             {
                 products?.map(product=><div className="col-md-4 g-4">
-                    <Card className="card-container">
+                    <Card className="card-design">
 
            <Card.Body>
            <Card.Text>
            <div>
                <img className="card-img" src={product.img} alt="" />
-           <h4 className="fw-bold mt-3">{product.name}</h4>
-           <p>{product.description.slice(0,50)}</p>
-           <h5 className="fw-bold">Delivery Time: 30 Min</h5>
-           <h5 className="fw-bold">Delivery Charge <span className="fw-bold delivery">$5</span></h5>
-          
+           <h4 className="fw-bold">{product.name}</h4>
+           <p className="fw-bold text-secondary">{product.description.slice(0,100)}</p>
+           </div>
+           <div className="row">
+               <div className="col-md-6">
+                   <p className="fw-bold">${product.price}</p>
+               </div>
+               <div className="col-md-6">
+                   <p className="fw-bold">22/32</p>
+               </div>
            </div>
           </Card.Text>
          </Card.Body>
-          <Card.Footer className="bg-success  fw-bold ">
+          <Card.Footer className="btn-color  fw-bold ">
           <Link to={`products/${product._id}`}><button className="btn text-light fw-bold">Order Details</button> </Link>
           
               
