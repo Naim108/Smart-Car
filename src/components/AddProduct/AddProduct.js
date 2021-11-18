@@ -1,73 +1,74 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import car from '../../images/car.jpg'
+import React, { useState } from "react"
 const AddProducts = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    
-    fetch('https://young-caverns-24656.herokuapp.com/addProduct',{
-      method: 'POST',
-      headers:{'content-type':'application/json'},
-      body:JSON.stringify(data)
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      alert('Product added Successfully')
-      
-    })
-    reset()
-    
-    
-  };
-  return (
-    <div className="container">
-      <div className="row mt-5 ">
-        <div className="col-md-7">
-        <h1>Add Car to mongodb Database</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
-        <input
-          className="p-2 m-2"
-          {...register("name")}
-          required
-          placeholder="Car name"
-        /> <br />
-        <input type="number"
-          className="p-2 m-2"
-          {...register("price")}
-          required
-          placeholder="Car price"
-        /> <br />
-        <input
-          className="p-2 m-2"
-          {...register("img")}
-          required
-          placeholder="Car image link"
-        /> <br />
-        <input
-          className="p-2 m-2"
-          type="text"
-          {...register("description", { required: true })}
-          required
-          placeholder=" Car details"
-        />
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
-        <br />
-        <input className="p-1 mt-3 btn btn-warning" type="submit" />
-      </form>
-        </div>
-        <div className="col-md-5 mt-2">
-          <img className=" w-100" src={car} alt="" />
+  const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState(null);
+    const [success, setSuccess] = useState(false);
 
-        </div>
-      </div>
-    </div>
+    const handleSubmit = e => {
+        e.preventDefault();
+        if (!image) {
+            return;
+        }
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('price', price);
+        formData.append('description', description);
+        formData.append('image', image);
+
+        fetch('https://young-caverns-24656.herokuapp.com/addProduct', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+             
+                if (data.insertedId) {
+                    setSuccess('Product added successfully')
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+  return (
+    <div>
+    <h3>Add A Product</h3>
+    <form onSubmit={handleSubmit}>
+        <input
+            sx={{ width: '50%' }}
+            label="name"
+            required
+            onChange={e => setName(e.target.value)}
+            variant="standard" />
+        <br />
+        <input
+            sx={{ width: '50%' }}
+            label="price"
+            required
+            onChange={e => setPrice(e.target.value)}
+            variant="standard" />
+        <br />
+        <input
+            sx={{ width: '50%' }}
+            label="description"
+            required
+            onChange={e => setDescription(e.target.value)}
+            variant="standard" />
+        <br />
+        <input
+            accept="image/*"
+            type="file"
+            onChange={e => setImage(e.target.files[0])}
+        />
+        <br />
+        <button variant="contained" type="submit">
+            Add Product
+        </button>
+    </form>
+    {success && <p className="text-success">{success}</p>}
+</div>
   );
 };
 

@@ -28,7 +28,8 @@ const Explore = () => {
            <Card.Body>
            <Card.Text>
            <div>
-               <img className="card-img" src={product.img} alt="" />
+           {/* <img className="card-img" src={`data:image/png;base64,${product.img}`} alt="" />  */}
+           <img className="card-img" src={product.img} alt="" />
            <h4 className="fw-bold">{product.name}</h4>
            <p className="fw-bold text-secondary">{product.description.slice(0,100)}</p>
            </div>
